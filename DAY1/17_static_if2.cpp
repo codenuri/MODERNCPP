@@ -51,3 +51,18 @@ void 중요한알고리즘(T a)
 
 // => 매크로는 조건부 컴파일은 되지만
 // => std::is_floating_point_v<T> 같은 타입 조사를 할수 없습니다.!!
+
+// OS 의 조사에 따른 분류는 
+// => 그냥 매크로만 으로도 충분합니다.
+
+void foo()
+{
+#ifdef _WIN32
+
+	// windows 시스템 콜
+#endif
+
+#ifdef _GNU_xx??    리눅스구별 매크로 찾아 보세요
+
+#endif
+}
