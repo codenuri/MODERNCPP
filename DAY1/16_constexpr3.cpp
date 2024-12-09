@@ -30,11 +30,14 @@ int main()
 
 	// 컴파일 시간에 수행할까요 ? 실행시간에 수행할까요 ?
 	int           s2 = Factorial(5); // 컴파일러마다 다를수 있습니다.
+									 // 컴파일러 옵션에 따라 다를수도 있습니다.
 
 	const int     s3 = Factorial(5); // 컴파일러마다 다를수 있습니다.
+									 // 컴파일러 옵션에 따라 다를수도 있습니다.
 
 	constexpr int s4 = Factorial(5); // 반드시 컴파일 할때 수행되어야 합니다.
 
 	constexpr int s5 = Factorial(n); // error. 인자가 변수 이므로
 									 // 컴파일 할때 수행될수 없습니다.
 }
+// godbolt.org 에 위 코드 붙여 넣기 해 보세요
