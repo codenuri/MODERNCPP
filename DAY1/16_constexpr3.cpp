@@ -29,7 +29,12 @@ int main()
 							//     인자가 변수 이므로 실행할때 함수 호출
 
 	// 컴파일 시간에 수행할까요 ? 실행시간에 수행할까요 ?
-	int           s2 = Factorial(5); 
-	const int     s3 = Factorial(5);
-	constexpr int s4 = Factorial(5);
+	int           s2 = Factorial(5); // 컴파일러마다 다를수 있습니다.
+
+	const int     s3 = Factorial(5); // 컴파일러마다 다를수 있습니다.
+
+	constexpr int s4 = Factorial(5); // 반드시 컴파일 할때 수행되어야 합니다.
+
+	constexpr int s5 = Factorial(n); // error. 인자가 변수 이므로
+									 // 컴파일 할때 수행될수 없습니다.
 }
