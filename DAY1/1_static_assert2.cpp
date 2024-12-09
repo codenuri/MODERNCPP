@@ -27,6 +27,11 @@ int main()
 
 template<typename T> void object_set_zero(T* p)
 {
+	// std::is_polymorphic<T>::value : T 가 가상함수가 있으면 TRUE 
+
+	static_assert( ! std::is_polymorphic<T>::value,
+		"error, T has virtual function");
+
 	memset(p, 0, sizeof(T)); 
 }
 
@@ -34,6 +39,11 @@ class AAA
 {
 	int data;
 public:
+	virtual void foo() {} 
+	// 가상함수를 가진 클래스의 객체를 생성하면
+	// => 가상함수 테이블이생성됩니다.
+	// => 이 경우 절대로 memset 등을 사용하면 안됩니다.
+
 };
 
 int main()
