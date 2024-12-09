@@ -16,11 +16,21 @@ int main()
 	int z1 = p3d.z;
 
 	// C++17 부터는 아래 처럼 사용가능합니다.(python 과 유사)
+	// => "structure binding" 이라는 문법
 	auto [x2, y2, z2] = p3d; // 이 한줄은 위 3줄과 동일합니다.
 							// auto x2 = p3d.x;
 							// auto y2 = p3d.y;
 							// auto z2 = p3d.z;
+	
+//	int[x3, y3, z3] = p3d; // error. auto 만 가능합니다.
 
+
+//	auto [x3, y3] = p3d; // error. 갯수 맞아야 합니다
+	
+
+	auto [x3, y3, _] = p3d; // ok.  주의할 점은 _ 도 변수 이름이라는 것
+
+	auto [x4, y4, _] = p3d; // error. 이미 선언된 _ 변수를 다시한번 선언한것
 
 
 
