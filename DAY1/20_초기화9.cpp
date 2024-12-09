@@ -15,6 +15,7 @@ int main()
 {
 	// 아래 코드가 각각 어떤 생성자를 호출할까요 ?
 	Point p1(1);		// Point(int)
+	
 	Point p2(1, 2);		// Point(int, int)
 	Point p3( { 1,2 } ); // Point(std::initializer_list<int>)
 
@@ -29,6 +30,12 @@ int main()
 	
 	Point p7 = { 1,2,3 };// ok. Point(std::initializer_list<int>) 는 explicit 아님. 
 
+	Point p8 = { 1 }; // ok.  Point(std::initializer_list<int>)
+
+	// 위와 같은 문법을 만든 의도.!!
+	// => STL 사용시 아래 처럼 초기화 하는 것을 지원하고 싶었습니다.
+	// => 그러기 위해서는 근거가 되는 문법이 필요 했습니다.
+	// 
 	// 결론, 생성자 인자로 std::initializer_list<> 를 사용하면 객체를 배열처럼 초기화 
 	// 할수 있습니다.
 	std::vector<int> v1{ 1,2,3,4,5,6 };		// ok
