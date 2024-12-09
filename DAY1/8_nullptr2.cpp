@@ -22,10 +22,12 @@ void foo(int* p) {}
 
 template<typename F, typename ARG>
 void forward_parameter(F f, ARG arg) // int arg = 0 
-{
-	// lock()
-	f(arg);		// foo(arg) 이므로 error
-	// unlock()
+{									 // std::nullptr_t arg = nullptr
+	
+	f(arg);	// foo(arg) 이되는데
+			// #1. int arg = 0 이 었다면 foo(arg) 는 에러
+			// #2. std::nullptr_t arg = nullptr 이 었다면 foo(arg) 는 에러아님.
+
 }
 
 int main()
