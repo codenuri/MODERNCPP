@@ -25,3 +25,7 @@ int main()
 	USET<int>    s1;
 	USET<double> s2;
 }
+
+// 핵심
+// typedef : 타입의 별명 만 만들수 있다.
+// using   : 타입의 별명 + template 의 별명을 만들수 있다.
