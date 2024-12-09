@@ -28,9 +28,10 @@ int main()
 template<typename T> void object_set_zero(T* p)
 {
 	// std::is_polymorphic<T>::value : T 가 가상함수가 있으면 TRUE 
+	// C++11, Type Traits 기술
 
 	static_assert( ! std::is_polymorphic<T>::value,
-		"error, T has virtual function");
+					"error, T has virtual function");
 
 	memset(p, 0, sizeof(T)); 
 }
