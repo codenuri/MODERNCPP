@@ -5,6 +5,8 @@
 // 초기화 주제에서 가장 중요한 핵심..
 // => 반드시 알아야 합니다.
 
+// std::initializer_list<int> 는 크기가 크지 않습니다.
+// => const & 가 아닌 call by value 가 원칙 입니다.
 void foo(std::initializer_list<int> e)
 {
 }
