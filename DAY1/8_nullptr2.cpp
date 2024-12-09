@@ -21,16 +21,20 @@ void foo(int* p) {}
 
 
 template<typename F, typename ARG>
-void forward_parameter(F f, ARG arg)
+void forward_parameter(F f, ARG arg) // int arg = 0 
 {
-	f(arg);
+	// lock()
+	f(arg);		// foo(arg) 이므로 error
+	// unlock()
 }
 
 int main()
 {
 	foo(0); // ok
 
-	forward_parameter(foo, 0); // foo 함수에 0을 전달해 달라는 것
+//	forward_parameter(foo, 0);	// foo 함수에 0을 전달해 달라는 것. 
+								// 하지만 error
+	forward_parameter(foo, nullptr); // ok..!!!
 }
 
 
