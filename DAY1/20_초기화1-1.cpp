@@ -4,8 +4,10 @@ int x = 10;
 
 class Test
 {
-	int value1 = 0;
-	int value2 = ++x;
+	int value1 = 0;   // ok. 좋은 코드
+	int value2 = ++x; // 에러는 아니지만 절대 이렇게 하지 마세요
+					  // 혼란스럽게 됩니다.!!!!!
+					  // 이 위치는 = 0 같은 초기화만 사용하세요. 
 public:
 	// 사용자 코드					// 컴파일러가 변경한 코드
 	Test() {}						// Test()      : value1(0), value2(++x) {} <= 1
