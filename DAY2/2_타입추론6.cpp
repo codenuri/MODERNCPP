@@ -15,6 +15,7 @@ int main()
 
 	// decltype(expression)
 	// 규칙 #1. expression 이 심볼의 이름만 있을때
+	// => 이름만 있는 표현식을 "id-expression" 이라고 합니다.
 	// => 각 심볼(이름)의 선언을 조사해서, 동일한 타입으로 결정
 
 	decltype(n) d1; // int  d1;
