@@ -1,8 +1,9 @@
 // 5_rvalue3.cpp
 #include <iostream>
 #include <type_traits>
-
-#define VALUE_CATEGORY( ... )									\
+#include "cppmaster.h" // 이 헤더 안에 아래 매크로 있습니다
+/*
+#define LOG_VALUE_CATEGORY( ... )									\
 if (std::is_lvalue_reference_v< decltype(( __VA_ARGS__  )) >)	\
 {																\
 	std::cout << "lvalue\n";									\
@@ -11,6 +12,7 @@ else                                                            \
 {																\
 	std::cout << "rvalue\n";									\
 }
+*/
 
 
 int main()
@@ -35,8 +37,8 @@ int main()
 		std::cout << "rvalue\n";
 
 	*/
-	VALUE_CATEGORY(n);
-	VALUE_CATEGORY(n+n);
-	VALUE_CATEGORY(++n);
-	VALUE_CATEGORY(n--);
+	LOG_VALUE_CATEGORY(n);
+	LOG_VALUE_CATEGORY(n+n);
+	LOG_VALUE_CATEGORY(++n);
+	LOG_VALUE_CATEGORY(n++);
 }
