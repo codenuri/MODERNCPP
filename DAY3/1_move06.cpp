@@ -53,4 +53,21 @@ int main()
 
 
 
+// C++에서 class 와 struct 차이점
+// => 아래 접근지정자의 디폴트 속성 만 다르고 모두 동일 합니다.
+/*
+class AAA
+{
+	int x;	// 접근지정자가 생략된 경우 private
+};
+struct AAA
+{
+	int x;	// 접근지정자가 생략된 경우 public
+};
+*/
 
+// 차이점이 거의 없는데.. 굳이 2개 있어야 하나요 ??
+// => 그래서 RUST 같은 언어는 class 가 없습니다. struct 만 있습니다.
+
+// 단, C#, Java 에서는 struct 와 class 는 완전히 다릅니다.
+// => 많은 차이점이 있습니다.
