@@ -33,6 +33,23 @@ int main()
 
 	foo() = 10;	// error. "0 = 10"
 	goo() = 10;	// ok	  "x = 10"
+
+	
+	
+	//---------------------------
+
+	// Quiz #1
+	const int c = 10;
+	c = 20;	// error.    c는 lvalue ? rvalue ?
+			// 이름이 있고, 단일식을 넘어 사용가능, 주소 구할수 있습니다.
+			// lvalue 입니다.
+			// "immutable lvalue" 입니다. 값을 변경할수 없는 lvalue
+
+	// Quiz #2
+	// 모든 rvalue 는 상수이다 ??
+	// => 아닙니다. 문법적으로 왼쪽에 올수 없을뿐, 상수는 아닙니다.
+	Point{ 1,1 }.x = 10;    // error
+	Point{ 1,1 }.set_x(10); // ok. 임시객체도 멤버 함수로는 상태 변경 가능합니다.
 }
 
 
