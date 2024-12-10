@@ -7,6 +7,10 @@
 template<typename T> void foo(T& a)
 {
 	std::cout << __FUNCSIG__ << std::endl;
+
+	// 주의 : C++ 표준의 RTTI 기술은 & 와 const 를 제거한 타입으로 보여주게 됩니다.
+//	std::cout << typeid(T).name() << std::endl;
+//	std::cout << typeid(a).name() << std::endl;
 }
 
 int main()
