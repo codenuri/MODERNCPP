@@ -27,16 +27,26 @@ int main()
 
 
 //--------------------
+
 Point pt(1, 2);
 
-Point foo() 
-{
-	return pt; 
+
+Point foo() // return by value
+{			// => 리턴용 복사본객체(임시객체)가 생성되어서 반환
+
+	return pt;	// 1. pt 를 복사한 임시객체가 생성되고
+				// 2. 임시객체를 반환 한것
+}
+
+Point& goo()	// return by reference
+{				// => 임시객체가 아닌 pt 의 별명을 반환
+	return pt;
 }
 
 int main()
 {
-	foo().x = 10;
+	foo().x = 10;	// error.	임시객체.x = 10 의 의미
+	goo().x = 10;	// ok		"pt.x = 10" 의 의미
 }
 
 
