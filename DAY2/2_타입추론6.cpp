@@ -14,9 +14,11 @@ int main()
 
 
 	// decltype(expression)
-	// 규칙 #1. expression 이 심볼의 이름일때
-	decltype(n) d1; // 
-	decltype(r) d2; // 
-	decltype(c) d3; // 
-	decltype(p) d4; // 
+	// 규칙 #1. expression 이 심볼의 이름만 있을때
+	// => 각 심볼(이름)의 선언을 조사해서, 동일한 타입으로 결정
+
+	decltype(n) d1; // int  d1;
+	decltype(r) d2; // int& d2;			// 초기값이 없어서 error.
+	decltype(c) d3; // const int d3;	// 초기값이 없어서 error.
+	decltype(p) d4; // int* d4;
 }
