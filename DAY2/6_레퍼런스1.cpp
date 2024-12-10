@@ -33,6 +33,7 @@ int main()
 	Point&& r3 = pt;			// error.
 	Point&& r4 = Point{ 0, 0 };	// ok
 
+
 	// const 가 붙어도 rvalue 만 가리킬수 있습니다.
 	// => 그런데, const rvalue reference 를 사용할일은 없습니다.(이유는 move 배운후)
 	const Point&& r5 = pt;			// error.
