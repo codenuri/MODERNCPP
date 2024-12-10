@@ -33,6 +33,19 @@ int main()
 
 
 
+	// 임시객체와 참조!!
+	Point p1{ 1,1 };
+
+	init(p1);		// ok
+
+
+	init( Point{ 1,1 } );	// error
+							// 임시객체를 non-const reference 로는 받을수 없다.
+							// non-const reference 의 의미는 값을 수정하겠다는것
+							// 함수 호출뒤 파괴될 객체의 값을 수정하는 것은
+							// 논리적으로 맞지 않다.
+
+
 	std::cout << "-----" << std::endl;
 }
 
