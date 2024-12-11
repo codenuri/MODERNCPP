@@ -7,6 +7,10 @@
 
 // => std::move() 사용시, 사용자가 만든 복사 생성자 호출. 
 
+
+// 이 경우 컴파일러에게 move 계열을 만들어 달라고 요청하려면
+// => "= defualt" 를 사용하면 된다.
+
 struct Object
 {
 	std::string name;
@@ -17,6 +21,12 @@ struct Object
 	{
 		std::cout << "copy\n";
 	}
+
+	/*
+	Object(Object&&) = default;					// 이동 생성자
+	Object& operator=(Object&&) = default;		// 이동 대입연산자
+	Object& operator=(const Object&) = default;	// 복사 대입연산자
+	*/
 };
 
 
