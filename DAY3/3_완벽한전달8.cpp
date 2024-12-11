@@ -14,6 +14,8 @@ int& f3(int a, double d, int& r) { r = 100; return r; }
 template<typename F, typename ... T>
 decltype(auto) chronometry(F f, T&& ... arg)
 {
+	// StopWatch sw;  // 생성자에서 시간 기록
+					  // 소멸자에서 수행시간 화면 출력
 	return f(std::forward<T>(arg)... );
 }
 
