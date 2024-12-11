@@ -1,11 +1,14 @@
 ﻿#include <iostream>
 
 // 함수객체와 const member function
+// => 함수객체 만들때 operator() 는 "const member function" 으로 하는 것이 원칙 입니다.
+// => 단, operator() 에서 멤버 변수를 수정하는 코드가 있다면, 예외..
+// => 이 사실이, "람다 표현식" 에서 중요하게 등장합니다.!! 꼭 알아 두세요.. 
 
 struct Plus
 {
-
-	int operator()(int a, int b)
+	
+	int operator()(int a, int b) const 
 	{
 		return a + b;
 	}
