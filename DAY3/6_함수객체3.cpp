@@ -16,13 +16,13 @@ int main()
 
 
 
-
 	// 주어진 구간에서 "3의 배수"를 찾고 싶다. 
-	auto p1 = std::find_if(v.begin(), v.end(), foo);
+	auto p2 = std::find_if(v.begin(), v.end(), foo);
 
 
-	int k = 0;
-	std::cin >> k;
+	// std::find    : 값 검색,   3번째 인자로 "값" 전달
+	// std::find_if : 조건 검색, 3번째 인자로 "함수 전달" 전달
+	//										인자가 한개인 단항 함수
 }
 
 
