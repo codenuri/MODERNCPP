@@ -44,8 +44,15 @@ int main()
 
 	// r2 를 foo(int&&) 로 보내려면 "lvalue => rvalue" 로 캐스팅해야 합니다.
 	
-	foo(static_cast<int&&>(r2)); // foo(int&&) 호출
+	foo( static_cast<int&&>(r2) ); // foo(int&&) 호출
 			// => r2가 이미 int&& 타입인데, 같은 타입 캐스팅 아닌가요 ?
+			// => 이 캐스팅은 타입 캐스팅이 아닌 "value 속성을 변경하는 캐스팅"
+			// => cppreference.com 에서 static_cast 검색해보세요
+
+	// 정리
+	int&& r3 = 10;
+	foo(r3);					// foo(int&),  r3는 lvalue
+	foo(static_cast<int&&>(r3)); // foo(int&&), lvalue => rvalue 로 변경해서 호출
 }
 
 
