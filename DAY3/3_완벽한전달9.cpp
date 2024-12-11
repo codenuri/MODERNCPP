@@ -38,9 +38,9 @@ int foo(int start, int end)
 {
 	int sum = 0;
 
-	for (int i = start; i <= end; ++)
+	for (int i = start; i <= end; ++i )
 	{
-		sum = sum + size;
+		sum = sum + i;
 	}
 	return sum;
 }
