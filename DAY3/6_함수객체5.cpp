@@ -12,10 +12,7 @@ class IsDivide
 public:
 	IsDivide(int v) : value(v) {}
 
-	bool operator()(int n)
-	{
-		return n % value == 0;
-	}
+	bool operator()(int n) 	{  return n % value == 0; }
 };
 
 int main()
@@ -24,10 +21,16 @@ int main()
 
 	int k = 3; 
 
-	IsDivide f(k);
-	bool ret = f(10);
+	IsDivide f(k);		// f 는 k 값을 보관하고 있습니다.
+						// f 는 단항함수(인자가 한개인 함수)로 사용가능 합니다.
 
-	auto p1 = std::find_if(v.begin(), v.end(), foo);
+	bool ret = f(10);	// 10 % k == 0
+
+	auto p1 = std::find_if(v.begin(), v.end(), f);
+
+
+
+	std::cout << *p1 << std::endl; // 6
 
 
 }
