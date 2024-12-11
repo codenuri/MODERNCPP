@@ -34,11 +34,11 @@ int main()
 	
 	// 아래 코드의 결과로 생성된 함수 모양과, 캐스팅 코드를 예상해 보세요
 
-	chronometry(foo, 10);	// T = ?,   T&& = ?
-							// chronometry( ? )
-							// static_cast<?>(arg)
+	chronometry(foo, 10);	// T = int,   T&& = int&&
+							// chronometry(F, int&& arg )
+							// static_cast<int&&>(arg)
 
-	chronometry(goo, n);	// T = ?,   T&& = ?
-							// chronometry( ? )
-							// static_cast<?>(arg)
+	chronometry(goo, n);	// T = int&,   T&& = int& && => int&
+							// chronometry(F,  int& arg )
+							// static_cast<int&>(arg)
 }
