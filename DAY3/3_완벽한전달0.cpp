@@ -29,15 +29,23 @@ int main()
 	int n = 0;
 	Point pt(1, 2);
 
-	// expression			type			value category
-	// 10
-	// n
-	// pt
-	// Point{0,0}
-	// r1
-	// r2
+	// expression	type		value category
+	// 10			int			rvalue
+	// n			int			lvalue
+	// pt			Point		lvalue	
+	// Point{0,0}	Point		rvalue
+	// r1			int&		lvalue
+	// r2			int&&		lvalue
 	//-------------------------------------------------------
+	// foo(int&)  : int&  타입을 받겠다는 것이 아니라 lvalue 를 받겠다는것
+	// foo(int&&) : int&& 타입을 받겠다는 것이 아니라 rvalue 를 받겠다는것
 
+	foo(r2); // foo(int&) 호출
+
+	// r2 를 foo(int&&) 로 보내려면 "lvalue => rvalue" 로 캐스팅해야 합니다.
+	
+	foo(static_cast<int&&>(r2)); // foo(int&&) 호출
+			// => r2가 이미 int&& 타입인데, 같은 타입 캐스팅 아닌가요 ?
 }
 
 
