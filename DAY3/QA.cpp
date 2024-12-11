@@ -16,7 +16,7 @@ public:
 // 사용자가 다시 만들수 있습니다
 void* operator new(std::size_t sz)
 {
-	printf("called new : %d bytes\n");
+	printf("called new : %zd bytes\n", sz);
 
 	return malloc(sz);
 }
