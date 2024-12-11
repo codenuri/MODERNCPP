@@ -48,6 +48,11 @@ int main()
 	std::cout << s1 << std::endl; // "kim"
 	std::cout << s2 << std::endl; // ""
 
+
+	std::vector<std::string> v;
+
+	v.push_back(s1);
+	v.push_back(std::move(s1));
 }
 
 
