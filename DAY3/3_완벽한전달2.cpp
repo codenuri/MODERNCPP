@@ -23,8 +23,10 @@ int main()
 {
 	int n = 10;
 
-	chronometry(foo, 10); 
-	chronometry(goo, n); 
+	chronometry(foo, 10); // ok.. 아무 문제 없음.
+	chronometry(goo, n);  // ok. 
+						  // 그런데, 이 코드는 한가지 문제가 있습니다.
+						  // => 다음 단계에서 설명.. 
 
 	std::cout << n << std::endl;
 }
