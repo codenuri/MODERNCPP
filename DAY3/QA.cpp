@@ -24,9 +24,9 @@ void* operator new(std::size_t sz)
 
 int main()
 {
-	std::shared_ptr<Point> sp1(new Point(1, 2));
+//	std::shared_ptr<Point> sp1(new Point(1, 2));
 
-//	std::shared_ptr<Point> sp2 = std::make_shared<Point>(1, 2);
+	std::shared_ptr<Point> sp2 = std::make_shared<Point>(1, 2);
 
 }
 
