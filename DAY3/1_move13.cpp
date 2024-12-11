@@ -49,6 +49,12 @@ int main()
 	std::cout << s2 << std::endl; // ""
 
 
+	// 참고, 아래 push_back 에서 마우스 오른쪽 버튼 누르고 "정의로 이동" 메뉴 선택하면
+	// 구현 볼수 있습니다
+	// 아래 처럼 2개의 구현이 있는 것을 볼수 있습니다.
+	// push_back( const T& arg)
+	// push_back( T&& arg)
+
 	std::vector<std::string> v;
 
 	v.push_back(s1);
