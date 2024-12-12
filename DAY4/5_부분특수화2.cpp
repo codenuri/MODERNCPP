@@ -46,5 +46,10 @@ int main()
 	Object<int*, double> ::foo();// T*, U
 	Object<int,  int>::foo();    // T, T
 	Object<int, short>::foo();   // int, short
-}
 
+	// 위 내용을 보고 아래 결과가 나오도록 부분특수화 추가해 보세요
+	Object<double, Object<short, char>>::foo();
+						// "T, Object<U, V>" 로 출력되게 해보세요
+	
+}
+using PINT = int*; // 컴파일러는 PINT 를 int* 로 인식
