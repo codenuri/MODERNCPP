@@ -8,6 +8,11 @@ template<typename T> struct is_pointer
 	enum { value = false };
 };
 
+template<typename T> struct is_pointer< ? >
+{
+	enum { value = true };
+};
+
 template<typename T> void foo(const T& a)
 {
 	// 현재 T는 : int, int* 입니다 (main 참고)
