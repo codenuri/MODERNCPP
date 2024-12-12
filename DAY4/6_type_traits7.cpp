@@ -60,3 +60,12 @@ template<typename T> void printv(const T& v)
 // 3. coroutine
 // 4. range library
 
+
+// 내일 : SFINAE, enable_if
+//        가변인자 템플릿  template<typename ... T>
+//		  std::tuple 을 직접 만드는 예제
+
+// C++20/23 에서 중요한 기술 2개
+// concept, deducing this 소개 
+
+// 최종 평가 : 4:00 ~ 5:00 
