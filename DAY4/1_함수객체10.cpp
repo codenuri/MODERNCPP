@@ -34,11 +34,13 @@ void init()
 
 void ex1()
 {
+	// 비교정책으로 일반함수를 사용해서 sort
 	std::sort(v1.begin(), v1.end(), cmp1);
 	std::sort(v1.begin(), v1.end(), cmp2);
 }
 void ex2()
 {
+	// 비교정책으로 함수객체를 사용해서 sort
 	std::sort(v2.begin(), v2.end(), Less{});
 	std::sort(v2.begin(), v2.end(), Greater{});
 }
@@ -47,6 +49,16 @@ int main()
 {
 	init();
 
+	chronometry(ex2);
+	chronometry(ex1);
+
 	chronometry(ex1);
 	chronometry(ex2);
+
+	chronometry(ex1);
+	chronometry(ex2);
+
 }
+
+// 디버그 빌드  : 인라인 치환이 적용되지 않습니다
+// Release 빌드 : 인라인 치환이 적용됩니다.
