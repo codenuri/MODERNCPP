@@ -23,8 +23,11 @@ public:
 		auto f1 = [this](int a) { data = a; };
 
 		f1(100); // 원본 data가 변경될까요 ??
+				 // 객체 주소의 값 캡쳐이므로
+				 // 이코드는 "주소복사본->data = 100" 이므로
+				 // 멤버 데이타 원본 변경
 
-		std::cout << data << std::endl;
+		std::cout << data << std::endl; // 100
 	}
 };
 
