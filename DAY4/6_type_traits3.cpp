@@ -3,6 +3,17 @@
 
 // 2번 참고(is_pointer 복사)해서 아래 만들어 보세요
 
+template<typename T> struct is_array
+{
+	static constexpr bool value = false;	
+};
+
+template<typename T> struct is_array< ?? >
+{
+	static constexpr bool value = true;
+};
+
+
 template<typename T> void foo(T& a)
 {
 	// is_array 만들어 보세요
