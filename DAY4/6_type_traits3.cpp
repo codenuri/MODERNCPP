@@ -1,14 +1,27 @@
 ﻿#include <iostream>
 #include <type_traits>
 
-// 2번 참고(is_pointer 복사)해서 아래 만들어 보세요
+
+// 변수 선언문에서 "변수 이름만 제외" 하면 "타입" 이 됩니다
+
+int n;		// n 의 타입은 int
+
+double d;	// d 의 타입은 double
+
+int x[3];	// x 의 타입은 int[3]
+			//			    T[N] => 임의 타입의 임의 크기를 가지는 배열 타입
+			//				T[]	 => unknown size array 라는 타입
+
+
+
+
 
 template<typename T> struct is_array
 {
 	static constexpr bool value = false;	
 };
 
-template<typename T> struct is_array< ?? >
+template<typename T, int N> struct is_array< T[N] >
 {
 	static constexpr bool value = true;
 };
