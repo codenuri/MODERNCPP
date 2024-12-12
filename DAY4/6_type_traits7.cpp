@@ -46,8 +46,17 @@ template<typename T> void printv(const T& v)
 }
 
 // 위와 같은 문제를 해결하는 주된 방법은 4가지가 있습니다
-// 1. std::integral_constant - C++11
-// 2. std::enable_if         - C++11
-// 3. if constexpr			 - C++17    ==> 위 코드 참고
-// 4. concept				 - C++20 
+// 1. std::integral_constant - C++11	==> 복잡합니다.
+// 2. std::enable_if         - C++11	==> (1)번 보다는 간결합니다.
+// 3. if constexpr			 - C++17    ==> 위 코드 참고. 가장 쉬운 해결책
+
+// 4. concept				 - C++20	==> 위 문제 뿐 아니라
+//											다양한 문제를 해결하는 아주
+//											커다란 기술!
+
+// C++20 핵심 기술
+// 1. concept
+// 2. module => #include<vector> 대신 import std.vector;
+// 3. coroutine
+// 4. range library
 
