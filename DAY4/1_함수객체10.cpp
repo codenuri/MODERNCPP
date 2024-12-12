@@ -4,6 +4,15 @@
 #include <algorithm>
 #include "chronometry.h"
 
+
+inline bool cmp1(int a, int b) { return a < b; }
+inline bool cmp2(int a, int b) { return a > b; }
+
+struct Less { inline bool operator()(int a, int b) const { return a < b; } };
+struct Greater { inline bool operator()(int a, int b) const { return a > b; } };
+
+
+
 const std::size_t count = 1000000;
 
 std::vector<int> v1;
