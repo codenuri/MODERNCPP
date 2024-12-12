@@ -13,7 +13,23 @@ int main()
 	auto f = [](int a, int b) { return a + b; };
 			 // class xxx{ operator()(...){}}; xxx{};
 
+	// 결국 위코드는
+	/*
+	auto f = 임시객체; 인데
+	Point pt = Point(1, 2); // 에서. 최적화에 의해서
+	Point pt(1, 2);			// 가 됩니다. 그래서 위코드는
+	xxx f;					// 즉, f 는 컴파일러가 만든 타입의 객체를 생성한것
+	*/
+
 	int n1 = f(1, 2);			 // 3. f를 함수 처럼 사용하면 됩니다.
 	int n2 = f.operator()(1, 2); // 이렇게도 사용가능합니다. 함수 객체 이므로!!
+
+	//-----------------------------
+	// 아래 코드에서 에러를 모두 찾으세요
+	auto  f1	   = [](int a, int b) { return a + b; };
+	auto& f2	   = [](int a, int b) { return a + b; };
+	const auto& f3 = [](int a, int b) { return a + b; };
+	auto&& f4	   = [](int a, int b) { return a + b; };
+
 }
 
