@@ -31,8 +31,15 @@ int main()
 	std::sort(v.begin(), v.end(), std::less<int>{} );
 
 
+
 	// #4. C++11 부터는 비교정책으로 람다 표현식 사용가능
-	std::sort(v.begin(), v.end(), ? );
+	// => 함수이름(주소)가 필요한 위치에 함수 구현 자체를 표기하는 문법
+	// => 익명의(이름이 없는) 함수 라고도 합니다.
+
+	// [] : lambda introducer 라고 합니다.
+	//		람다 표현식이 시작됨을 알리는 기호
+
+	std::sort(v.begin(), v.end(), [](int a, int b) { return a < b; } );
 }
 
 
