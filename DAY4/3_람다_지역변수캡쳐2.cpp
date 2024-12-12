@@ -27,7 +27,8 @@ int main()
 	std::cout << v1 << std::endl; // 10
 
 
-	std::cout << sizeof(f1) << std::endl; // ??
+	std::cout << sizeof(f1) << std::endl; // 8. 결국 아래 클래스의 크기
+										  //    int v1, v2 가 멤버 데이타 이므로
 
 
 
