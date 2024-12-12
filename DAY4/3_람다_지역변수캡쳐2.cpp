@@ -9,7 +9,15 @@ int main()
 
 	// "지역변수 캡쳐" 라는 문법의 정확한 원리
 
-	auto f1 = [v1, v2](int a) { v1 = 100; return a + v1 + v2; }; 
+//	auto f1 = [v1, v2](int a) { return a + v1 + v2; };  // ok
+//	auto f1 = [v1, v2](int a) { v1 = 100; return a + v1 + v2; }; // error.
+																 // operator()가 상수함수인데
+																 // 값을 변경하고 있기때문
+																 // 아래 원리 참고
+	// mutable lambda expression
+	// => operator() 연산자를 non-const member function 으로 해달라는 의미.
+	auto f1 = [v1, v2](int a) mutable { v1 = 100; return a + v1 + v2; };
+
 
 	
 	// 위 한줄을 보고 컴파일러는 아래 코드를 생성합니다.
@@ -20,7 +28,8 @@ int main()
 	public:
 		CompilerGeneratedName(int a, int b) : v1(a), v2(b) {}
 
-		inline auto operator()(int a) const 
+//		inline auto operator()(int a) const		// 일반 람다 표현식
+		inline auto operator()(int a)			// mutable 람다 표현식
 		{ 
 			v1 = 100; 
 			return a + v1 + v2; 
