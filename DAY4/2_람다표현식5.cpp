@@ -23,6 +23,10 @@ int main()
 	auto f3 = [](int a, int b) { return a + b; };
 
 	f3 = [](int a, int b) { return a + b; }; // 될까요 ??
+					// error
+					// 모든 람다 표현식은 다른 타입입니다.
+					// 따라서, 람다 표현식으로 초기화된 auto 변수에는
+					// 다른 람다 표현식은 넣을수 없습니다.
 
 }
 
