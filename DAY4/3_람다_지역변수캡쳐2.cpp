@@ -19,6 +19,18 @@ int main()
 	auto f1 = [v1, v2](int a) mutable { v1 = 100; return a + v1 + v2; };
 
 
+	f1(0);	// f1.operator()(0) 으로 호출
+			// v1 = 100 이 실행되지만 
+			// main 의 지역변수 v1 이 변경된것이 아니라
+			// 복사본(아래 클래스에서 멤버데이타 v1) 이 변경된것 입니다.
+
+	std::cout << v1 << std::endl; // 10
+
+
+	std::cout << sizeof(f1) << std::endl; // ??
+
+
+
 	
 	// 위 한줄을 보고 컴파일러는 아래 코드를 생성합니다.
 	class CompilerGeneratedName
