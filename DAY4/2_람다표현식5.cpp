@@ -18,8 +18,11 @@ int main()
 
 	std::cout << typeid(f1).name() << std::endl;
 	std::cout << typeid(f2).name() << std::endl;
+	//----------------------------------------------
 
+	auto f3 = [](int a, int b) { return a + b; };
 
+	f3 = [](int a, int b) { return a + b; }; // 될까요 ??
 
 }
 
