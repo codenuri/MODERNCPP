@@ -30,4 +30,9 @@ int main()
 {
 	int n = 0;
 	foo(&n);
+
+
+	// visual studio 실행중인분은 "std::is_" 까지 입력해 보세요
+
+	
 }
