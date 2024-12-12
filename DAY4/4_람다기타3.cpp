@@ -1,12 +1,21 @@
 ﻿int main()
 {
+	int n = 10;
+	double d = 3.4;
+
 	// C++14 : generic lambda expression
 	auto swap = [](auto& a, auto& b) { auto tmp = std::move(a); 
 										   a = std::move(b); 
 										   b = std::move(tmp); };
 
-	int n = 10;
-	double d = 3.4;
-
 	swap(n, d); // 에러 나는게 좋을까요 ? 에러 없는게 좋을까요 ?
+				// 에러가 나는게 좋지만, 에러 아닙니다.
+				// 위 swap 은 2개의 인자가 서로 다른 템플릿 이므로.
+	//------------------------------------
+	// C++20 : template lambda expression 문법 추가. 
+	auto swap2 = []<typename T>(T& a, T& b) {   T tmp = std::move(a);
+												a = std::move(b);
+												b = std::move(tmp); };
+	swap2(n, d); // error. 1, 2개의 인자 타입이 같아야 하는데..
+				 //        다르기 때문에..
 }
