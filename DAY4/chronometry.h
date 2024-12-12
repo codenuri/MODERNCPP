@@ -1,3 +1,6 @@
+// chronometry.h
+#pragma once
+
 #include <chrono>
 #include <iostream>
 
@@ -25,7 +28,7 @@ public:
 template<typename F, typename ... T>
 decltype(auto) chronometry(F f, T&& ... arg)
 {
-	stop_watch sw(true);	
+	stop_watch sw(true);
 
 	return f(std::forward<T>(arg)...);
 }
