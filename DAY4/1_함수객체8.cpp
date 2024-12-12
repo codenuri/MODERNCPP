@@ -14,7 +14,7 @@ struct Greater { inline bool operator()(int a, int b) const { return a > b; } };
 // 비교 정책 함수가 "인라인 치환"도 가능합니다.
 // => 함수 객체와 template 으로 만드는 기술
 // => STL 의 핵심 설계 원리 입니다.
-
+// => 단점은 여러개 sort 생성.. 
 template<typename T>
 void Sort(int* x, int sz, T cmp )
 {
