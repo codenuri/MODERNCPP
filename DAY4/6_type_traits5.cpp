@@ -11,10 +11,14 @@ template<typename T> struct remove_all_pointer
 
 template<typename T> struct remove_all_pointer< T* >
 {
-	using type = remove_all_pointer<T>::type;
+	using type = typename remove_all_pointer<T>::type;
 };
 
 int main()
 {
 	remove_all_pointer< int*** >::type n;
+
+	std::cout << typeid(n).name() << std::endl; // int
+
+	// 참고 : C++ 표준에는 remove_all_pointer 는 없습니다.
 }
