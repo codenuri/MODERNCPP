@@ -27,8 +27,9 @@ int main()
 	Object o1;
 
 	Object o2 = std::move(o1);
-	Object o3 = std::move(Object{}); // ok
-
-	Object o4 = xmove(o2);
-	Object o5 = xmove( Object{} );	
+	Object o3 = std::move(Object{}); 
+	// 아래 코드는 모두 move 나와야 합니다 그런데..
+	// => 이유와 해결책은 다음소스에서.. 
+	Object o4 = xmove(o2);			// copy
+	Object o5 = xmove( Object{} );	// move
 }
