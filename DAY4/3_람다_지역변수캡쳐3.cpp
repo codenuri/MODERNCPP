@@ -31,7 +31,12 @@ int main()
 
 		inline auto operator()(int a) const		
 		{
-			v1 = a; 
+			v1 = a;		// ??? const member function 에서는 멤버데이타 수정 안되지 않나요 ??
+						// v1은 int 가 아닌 int& 입니다.
+						// int& 는 결국 컴파일 하면 int* 입니다
+						// 즉, 이코드는
+						// (*v1) = a; 라는 의미 입니다.
+						// v1 자체의 변경이 아니라 v1 이 가리키는 곳의 변경입니다.
 			v2 = a;
 		}
 	};
