@@ -7,28 +7,35 @@ int main()
 {
 	int v1 = 10, v2 = 10;
 
-
-//	auto f1 = [v1, v2](int a) { v1 = 100; return a + v1 + v2; };		// error
+	// #1. Capture by value
+	// => 지역변수 v1, v2 의 복사본을 보관하게 됩니다.( 2.cpp 소스 참고)
+//	auto f1 = [v1, v2](int a)         { v1 = 100; return a + v1 + v2; }; // error
 	auto f1 = [v1, v2](int a) mutable { v1 = 100; return a + v1 + v2; };
 
 
+	// #2. Capture By Reference
+	auto f2 = [&v1, &v2](int a) { v1 = a; v2 = a; };
+
+	f2(100); // v1 = 100, v2 = 100 이 실행되는데, 
+			 // 복사본이 아닌 main 의 지역변수를 변경
+
+	std::cout << v1 << ", " << v2 << std::endl; // 100, 100
 
 
 	class CompilerGeneratedName
 	{
-		int v1;	
-		int v2; 
+		int& v1;	
+		int& v2; 
 	public:
-		CompilerGeneratedName(int a, int b) : v1(a), v2(b) {}
+		CompilerGeneratedName(int& a, int& b) : v1(a), v2(b) {}
 
-//		inline auto operator()(int a) const		
-		inline auto operator()(int a)			
+		inline auto operator()(int a) const		
 		{
-			v1 = 100;
-			return a + v1 + v2;
+			v1 = a; 
+			v2 = a;
 		}
 	};
-	auto f2 = CompilerGeneratedName{ v1, v2 }; 
+	auto f3 = CompilerGeneratedName{ v1, v2 }; 
 }
 
 
