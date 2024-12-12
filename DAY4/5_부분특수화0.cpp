@@ -22,10 +22,14 @@ template<typename T> void foo(T a)
 
 	//-------------------------------------------
 	// dependent name(의존이름) : 템플릿 인자 T에 의존해서 꺼내는 이름
+	//							  의존이름이 "값" 인지 "타입인지" 조사하기 어렵다
 	//							  컴파일러는 항상 "값" 으로 해석한다.
 
 	T::data * p1;	// 곱하기로 해석, p1 이 있으므로 ok
-	T::DWORD* p2;	// 곱하기로 해석, p2 가 없기 때문에 error
+//	T::DWORD* p2;	// 곱하기로 해석, p2 가 없기 때문에 error
+
+	typename T::DWORD* p2;	// DWORD 를 타입의 이름으로해석해 달라.
+							// p2는 이제 변수의 선언 이므로 ok.. 
 }
 
 int main()
