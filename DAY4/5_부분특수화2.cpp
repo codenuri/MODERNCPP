@@ -32,6 +32,11 @@ template<typename T> struct Object<T, T> // <==A
 	static void foo() { std::cout << "T, T" << std::endl; }
 };
 
+// partial specilization 이 아닌 "specialization". 모든 타입이 확정된경우.
+template<> struct Object<int, short>
+{
+	static void foo() { std::cout << "int, short" << std::endl; }
+};
 
 int main()
 {
