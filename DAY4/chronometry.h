@@ -25,7 +25,7 @@ public:
 template<typename F, typename ... T>
 decltype(auto) chronometry(F f, T&& ... arg)
 {
-	stop_watch sw(true);	// true 는 소멸자에서 화면에 걸린 시간 출력해 달라는 의미
+	stop_watch sw(true);	
 
 	return f(std::forward<T>(arg)...);
 }
