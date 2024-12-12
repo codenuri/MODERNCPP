@@ -35,7 +35,13 @@ int main()
 	int(*f2)(int, int) = [v1, v2](int a, int b) {return a + b + v1 + v2; }; // error
 }
 
-
+// 1. 간단한 문법 변화/추가
+// 2. 타입추론, 초기화
+// 3. move 이야기들, lvalue/rvalue, rvalue reference
+// 4. perfect forwarding, forwarding reference
+// 5. lambda expression, function object(함수객체)
+// -----------------------------------------------
+// 6. traits 기술, 사전지식 : 부분특수화, enable_if = template 관련
 
 
 
