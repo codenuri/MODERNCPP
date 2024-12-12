@@ -1,6 +1,4 @@
-﻿//void foo(auto n) {} 
-
-int main()
+﻿int main()
 {
 	// generic lambda
 	// => 인자로 auto 를 사용하는 것
@@ -24,3 +22,17 @@ public:
 		return a + b;
 	}
 };
+
+// 생각해 볼문제
+// => 일반 함수도 인자로 auto 사용가능할까요 ?
+// => C++20 부터 가능합니다.
+// => 원리는 템플릿 입니다.
+void foo(auto n)		// template<typename T> void foo( T n)
+{						// {
+}						// }
+
+// 그래서 C++20 부터는 add 를 template 으로 만들때 아래 처럼 합니다.
+auto add(auto a, auto b) // template<typename T1, typename T2> auto add(T1 a, T2 b)
+{
+	return a + b;
+}
