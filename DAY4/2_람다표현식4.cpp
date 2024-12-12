@@ -26,10 +26,17 @@ int main()
 
 	//-----------------------------
 	// 아래 코드에서 에러를 모두 찾으세요
-	auto  f1	   = [](int a, int b) { return a + b; };
-	auto& f2	   = [](int a, int b) { return a + b; };
-	const auto& f3 = [](int a, int b) { return a + b; };
-	auto&& f4	   = [](int a, int b) { return a + b; };
+	auto  f1	   = [](int a, int b) { return a + b; };	// ok
+	auto& f2	   = [](int a, int b) { return a + b; };	// error
+	const auto& f3 = [](int a, int b) { return a + b; };	// ok
+	auto&& f4	   = [](int a, int b) { return a + b; };	// ok
 
+	// 위 코드에는 f1 이 가장 좋은 코드
+	Point pt = Point(); // 의미 인데. 최적화 되므로
+	Point pt;           // 입니다. overhead 전혀 없습니다.
+
+	const Point& pt = Point(); // 는 결국 pt가 포인터 입니다.
+							   // 따라서 pt를 사용할때 주소를꺼내서 접근
+							   // 하므로 약간의 성능 저하 발생
 }
 
