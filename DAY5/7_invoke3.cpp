@@ -18,7 +18,7 @@ decltype(auto) chronometry(F f, T&& ... args)
 //	return f(std::forward<T>(arg)...);  // 이렇게 하면 f 가 일반 함수 포인터는 문제 없지만
 										// 멤버 함수 포인터 라면 error 입니다.
 
-	return std::invoke(f, std::forward<T>(arg)...);
+	return std::invoke(f, std::forward<T>(args)...);
 				// 이렇게 해야, main 함수 처럼
 				// 일반함수, 멤버 함수가 모두 가능합니다.
 }
