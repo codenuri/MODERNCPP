@@ -16,7 +16,11 @@ template<typename T> void printv(const T& a)
 template<typename ... Types>
 void Show(Types ... args)
 {
-	( printv(args), ... );
+	( printv(args)    ,        ... );
+	// pack이름    이항연산자    ...   => (args + ...) 의 형태이므로 nary  right fold 
+	//									E1+(E2+(E3+(E4+E5)))
+	// printv(1) , ( printv(2), (printv(3), (printv(4) ,  ....... )
+	// => fold expresson 은 아주 많은 일을 할수 있습니다
 }
 
 int main()
