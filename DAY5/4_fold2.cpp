@@ -22,7 +22,15 @@ void Show(Types ... args)
 	// printv(1) , ( printv(2), (printv(3), (printv(4) ,  ....... )
 	// => fold expresson 은 아주 많은 일을 할수 있습니다
 
-	( std::cout << ... << args ); // 이 코드가 하는일은 ?
+//	( std::cout << ... << args ); // 이 코드가 하는일은 ?
+	// 초기값   op  ... op pack		이므로 binary left fold. ((((0+E1)+E2)+E3)+E4)+E5
+	// (((((std::cout << e1) << e2) << e3 ) << e4 .... 
+	// 결국 : std::cout << 1 << 2 << 3 << 4 ....
+
+
+	// 아래 코드가 하는일은 ?
+	( (std::cout << args << " ") , ... );
+
 }
 
 int main()
