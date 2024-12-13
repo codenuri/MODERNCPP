@@ -6,11 +6,11 @@ int main()
 {
 	//	tuple<> t0;					  // primary 사용, 보관하는 데이타 없음. 
 	// 
-	//	tuple<			   short> t1;			// short 보관 5
+	//	tuple<			   short> t1;			// short 보관 5    2번째 부모
 	// 
-	//	tuple<	   double, short> t2;			// double 보관 3.4
+	//	tuple<	   double, short> t2;			// double 보관 3.4  1번째 부모
 	// 
-	//	tuple<int, double, short> t3(1, 3.4, 5); // int 보관  1
+	//	tuple<int, double, short> t3(1, 3.4, 5); // int 보관  1		0번째 부모
 
 
 	tuple<int, double, short> t(1, 3.4, 5);
@@ -39,5 +39,9 @@ get( TP& tp )
 {
 	return static_cast<튜플TP의 N번째요소를 저장하는 부모타입&>(tp).value;
 }
-
+// 위 한글을 코드로 변경하면 완성됩니다.
+// 결국 튜플 TP 에서 
+// => N 번째 요소의 타입과
+// => N 번째 기반 클래스의 타입을 구할수 있으면 됩니다.
+// => 또한, get 도 결국 캐스팅이므로 오버헤드는 없습니다.
 
