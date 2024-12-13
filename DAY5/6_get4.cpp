@@ -17,8 +17,10 @@ template<typename T, typename ... Types>
 struct tuple_element<0, tuple<T, Types...> >
 {
 	// tuple<int, double, short> 의 0번째 요소 타입은 int
-	// tuple<int, double, short> 의 0번째 요소 를 저장하는 타입은 
-	using type = T;
+	// tuple<int, double, short> 의 0번째 요소 를 저장하는 타입은 자신 즉,tuple<int, double, short> 타입
+
+	using type = T;	// 0번째 요소 타입
+	using tuple_type = tuple<T, Types...>;	// 0번째 요소를 저장하는 타입은
 };
 
 
@@ -27,27 +29,27 @@ template<int N, typename T, typename ... Types>
 struct tuple_element<N, tuple<T, Types...> >
 {
 	using type = typename tuple_element<N - 1, tuple< Types...>>::type;
+
+	using tuple_type = typename tuple_element<N - 1, tuple< Types...>>::tuple_type;
 };
 
-
-template<typename T>
-void foo(T& tp)
+template<int N, typename TP >
+typename tuple_element<N, TP>::type& 
+get(TP& tp)
 {
-	// T : tuple<int, double, short>
-
-	typename tuple_element<0, T>::type n1;	// <= 핵심  int n1
-	typename tuple_element<1, T>::type n2;  // double n2
-
-	std::cout << typeid(n1).name() << std::endl; // int
-	std::cout << typeid(n2).name() << std::endl; // double
+	return static_cast<typename tuple_element<N, TP>::tuple_type&>(tp).value;
 }
-
 
 int main()
 {
 	tuple<int, double, short> t(1, 3.4, 5);
 
-	foo(t);
+	get<0>(t) = 10;
+	get<1>(t) = 4.3;
+
+	std::cout << get<0>(t) << std::endl;	// 10
+	std::cout << get<1>(t) << std::endl;	// 4.3
+	std::cout << get<2>(t) << std::endl;	// 5
 }
 
 
