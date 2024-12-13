@@ -42,4 +42,10 @@ int main()
 
 	(obj.*f2)(10); // ok.. 이코드 멤버함수 포인터로 함수를 호출하는 코드입니다.
 
+
+	// 멤버 함수 포인터 정리 : 아래 3줄 외우세요
+	void(Object:: * f4)(int) = &Object::mf1;
+
+	Object obj2;
+	(obj2.*f4)(10);
 }
