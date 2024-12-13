@@ -33,11 +33,11 @@ int main()
 	get<0>(t) = 10;
 }
 
-template<>
-?
-get(? )
+template<int N, typename TP >
+튜플TP의 N번째 요소의 타입&
+get( TP& tp )
 {
-
+	return static_cast<튜플TP의 N번째요소를 저장하는 부모타입&>(tp).value;
 }
 
 
