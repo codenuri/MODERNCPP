@@ -4,14 +4,18 @@
 // enable_if 를 사용한 반환 타입 만들기
 
 
-// 사용법 : enable_if< 조건, 반환타입 >::type
+// 사용법 #1 : typename std::enable_if< 조건, 반환타입 >::type
+// 사용법 #2 :          std::enable_if_t< 조건, 반환타입 >
+// 
 // => 아래 코드는 결국 조건을 만족(정수계열 타입)하는 경우만 gcd 템플릿을
 //    사용하겠다는 것
 
 template<typename T> 
 						//  true 라면			  T
-typename std::enable_if< std::is_integral_v<T>, T>::type
+// typename std::enable_if< std::is_integral_v<T>, T>::type
 						//  false 라면			 "::type" 없음. 
+
+std::enable_if_t< std::is_integral_v<T>, T>
 gcd(T a, T b)
 {
 
