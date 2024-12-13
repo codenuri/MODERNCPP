@@ -20,13 +20,17 @@ template<typename ... Types> void foo(Types ... args)
 	// 2. {} 초기화 구문에서				 int x[] = { args...}; => {e1, e2, e3}
 	// 3. 템플릿 인자				std::tuple<Types...> => std::tuple<int, int,int>
 
-	// 따라서, 위 의도 대로 하려면 아래 처럼해야 합니다.
-	int dummy[] = { printv(args)... };  // { printv(e1), printv(e2), printv(e3) }
-}
 
+	// 따라서, 위 의도 대로 하려면 아래 처럼해야 합니다.
+	// => 아래 코드는 가변인자 템플릿 처음 발표 되었을때 알려진 유명한 코드
+	// => 지금은 recursive 기법이나 fold expression (c++17) 으로 하면 훨씬 간단합니다
+	int dummy[] = { 0, (printv(args), 0)... };  
+			   // { 0, (printv(e1), 0) , (printv(e2), 0) , (printv(e3), 0) }
+}
 
 int main()
 {
 	foo(1, 2, 3);
+	foo();
 }
 
