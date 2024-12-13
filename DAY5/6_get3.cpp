@@ -12,6 +12,36 @@ template<int N, typename T> struct tuple_element
 	// 그래서, 구할수 있도록 부분 특수화 기술을 사용해야 합니다.
 };
 
+//=============================================
+// #1. N == 0 일때를 위한 부분 특수화
+/*
+template<typename T> struct tuple_element<0, T>
+{
+	using type = 튜플T의 0번째 요소의 타입을 표기해야 하는데;
+
+	// 아직 구할수 없습니다.
+	// 잘못된 부분 특수화
+};
+*/
+/*
+template<typename ... Types> struct tuple_element<0, tuple<Types...> >
+{
+//	using type = tuple<Types...> 의 0번째 요소의 타입을 표기해야 하는데;
+
+	// 역시 0번째 타입을 구할수 없다.
+	// 잘못된 부분 특수화
+};
+*/
+// 핵심 : 튜플의 0번째 타입을 알아낼수 있도록 부분 특수화를 잘해야 합니다.
+template<typename T, typename ... Types> 
+struct tuple_element<0, tuple<T, Types...> >
+{
+	using type = T;
+};
+
+
+
+
 
 template<typename T>
 void foo(T& tp)
