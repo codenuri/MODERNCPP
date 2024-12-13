@@ -39,8 +39,19 @@ struct tuple_element<0, tuple<T, Types...> >
 	using type = T;
 };
 
+//=====================================
+// #2. N != 0 
+template<int N, typename T, typename ... Types>
+struct tuple_element<N, tuple<T, Types...> >
+{
+	// tuple<int, double, short> 의 2번째 요소의 타입(short) 는
+	// tuple<     double, short> 의 1번째 요소의 타입이고
+	// tuple<             short> 의 0번째 요소의 타입입니다.
+	// => 즉, 1번째 타입을 버리고, N-1 을 구하면 됩니다.
+	// => recursive 하게 조사하면서 N==0을 만들면 된다.
 
-
+	using type = typename tuple_element<N - 1, tuple< Types...>>::type;
+};
 
 
 template<typename T>
@@ -49,10 +60,10 @@ void foo(T& tp)
 	// T : tuple<int, double, short>
 
 	typename tuple_element<0, T>::type n1;	// <= 핵심  int n1
-//	typename tuple_element<1, T>::type n2;  // double n2
+	typename tuple_element<1, T>::type n2;  // double n2
 
 	std::cout << typeid(n1).name() << std::endl; // int
-//	std::cout << typeid(n2).name() << std::endl; // double
+	std::cout << typeid(n2).name() << std::endl; // double
 }
 
 
