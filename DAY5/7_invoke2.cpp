@@ -1,4 +1,6 @@
-﻿class Object
+﻿#include <functional> // std::invoke
+
+class Object
 {
 public:
 	// Object obj;
@@ -23,5 +25,16 @@ int main()
 	f1(10);			// 일반 함수 포인터 사용
 	(obj.*f2)(10);	// 멤버 함수 포인터 사용
 
+
 	// #2. 위 문제를 해결하기 위해 C++ 창시자가 아래 문법을 제안했습니다.
+	// => "uniform call syntax" 라는 문법
+	// => 그런데, 표준에 채택 안됨.
+//	f1(10);
+//	f2(&obj, 20); // obj.f2(20)
+
+
+	// #3. 대신 C++17 에서 std::invoke 라는 라이브러리를 추가하게 됩니다.
+	// => #include <functional> 필요
+	std::invoke(f1, 10); // f1(10)
+	std::invoke(f2, &obj, 10);	// obj.f2(10)
 }
