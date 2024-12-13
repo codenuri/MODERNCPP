@@ -2,15 +2,15 @@
 #include <iostream>
 #include "tuple.h"
 
-// #1. 사용하는 코드를 잘 생각해서, primary template 을 작성 합니다.
-template<int N, typename T> struct tuple_element
-{
-	// 튜플 T에서 N 번째 요소의 타입을 ? 에 표기해야 합니다.
-	// 그런데, 현재 코드에서는 알수 없습니다.
-	// using type = ? ;
+// 결국 tuple_element 는 N == 0, N != 0 의 경우에 해당하는
+// 부분 특수화 버전만 사용합니다.
+// primary version 은 사용하지 않게 됩니다.
+// "이경우는 구조체도 선언만 하면 됩니다.
+// 단, 선언은 반드시 있어야 부분 특수화 가능합니다.
+template<int N, typename T> struct tuple_element;
 
-	// 그래서, 구할수 있도록 부분 특수화 기술을 사용해야 합니다.
-};
+
+
 
 // #1. N == 0
 template<typename T, typename ... Types>
@@ -32,6 +32,8 @@ struct tuple_element<N, tuple<T, Types...> >
 
 	using tuple_type = typename tuple_element<N - 1, tuple< Types...>>::tuple_type;
 };
+
+
 
 template<int N, typename TP >
 typename tuple_element<N, TP>::type& 
