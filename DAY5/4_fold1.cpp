@@ -13,14 +13,19 @@ int Sum(Types ... args)
 	// 하고싶은일 : 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 
 	// => pack 의 모든 요소에 이항연산자(+)를 적용하고 싶은것 
 
-	int n = (args + ...);
+//	int n = (args + ...); // 이코드는 args 가 비었을때는에러 
+						  // 1 + (2 + (3 + (4 + 5))))
+
+	int n = (args + ... + 0); // args가 비었을때도 ok. 
+								// 1 + (2 + (3 + (4 + (5 + 0))))
 
 	return n;
 }
 
 int main()
 {
-	int n = Sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+//	int n = Sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+	int n = Sum();
 
 	std::cout << n << std::endl;
 }
@@ -36,7 +41,12 @@ int main()
 // => '+' 위치에 어떠한 이항 연산자도 올수 있습니다.
 // => '0' 위치에 어떠한 값(변수)도 올수 있습니다(init value 라고 합니다.)
 
+//						   (pack이름  이항op  ...)
 // #1. unary  right fold : (args + ...)	    => E1+(E2+(E3+(E4+E5)))		 
 // #2. binary right fold : (args + ... + 0) => E1+(E2+(E3+(E4+(E5+0))))  
 // #3. unary  left fold  : (... + args)	    => (((E1+E2)+E3)+E4)+E5		 
 // #4. binary left fold  : (0 + ... + args) => ((((0+E1)+E2)+E3)+E4)+E5  
+
+// fold expression
+// => 함수 형 언어(haskell 같은)에서 만든 개념
+// => C++ 외에, C#, python, java 등 대부분 언어에서 볼수 있습니다.
